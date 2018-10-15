@@ -7,7 +7,7 @@ def league_builder():
         soccer_reader = csv.reader(csvfile)
         rows = list(soccer_reader)
     del(rows[0])
-        
+
     #The LISTS! 
     the_best_players = []
     the_okiest_players = [] 
@@ -17,7 +17,7 @@ def league_builder():
 
     #Seperates the YES from the NO players, puts them into seperate lists
     for players in rows:
-        if players[2]=='YES':
+        if players[2] == 'YES':
             the_best_players.append(players)
         else:
             the_okiest_players.append(players)
@@ -31,6 +31,7 @@ def league_builder():
     sharks = "Sharks" + "\n" + "\n".join([', '.join(x) for x in shark_list])
     dragons = "Dragons" + "\n" + "\n".join([', '.join(x) for x in dragon_list])
     raptors = "Raptors" + "\n" + "\n".join([', '.join(x) for x in raptor_list])
+
 
     #Function to write teams to 'teams.txt' file
     def team_writer(team):
@@ -69,9 +70,6 @@ def league_builder():
                            
                 with open(title, "a") as file:
                         file.write("Dear, " + player_parents + ", " + player_letters + " will start playing for the " + team_name + " with the starting date of 10/10/3021")
-                        
-
-
     
     #function calls
     all_teams = [sharks, dragons, raptors]

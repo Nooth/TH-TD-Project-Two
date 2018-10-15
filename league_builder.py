@@ -10,10 +10,10 @@ def league_builder():
         
     #The LISTS! 
     the_best_players = []
-    the_okiest_players = [] #They still are the best players to me
-    Sharks = []
-    Dragons = []
-    Raptors = []
+    the_okiest_players = [] 
+    sharks = []
+    dragons = []
+    raptors = []
 
     #Seperates the YES from the NO players, puts them into seperate lists
     for players in rows:
@@ -27,11 +27,10 @@ def league_builder():
     dragon_list = the_best_players[3:6] + the_okiest_players[3:6]
     raptor_list = the_best_players[6:] + the_okiest_players[6:]
     
-    #Admittedly, I had to do some research for this.
-    #It joins EACH individual item of a list, by access specific items. Its a for loop in one sentence
-    Sharks = "Sharks" + "\n" + "\n".join([', '.join(x) for x in shark_list])
-    Dragons = "Dragons" + "\n" + "\n".join([', '.join(x) for x in dragon_list])
-    Raptors = "Raptors" + "\n" + "\n".join([', '.join(x) for x in raptor_list])
+    
+    sharks = "Sharks" + "\n" + "\n".join([', '.join(x) for x in shark_list])
+    dragons = "Dragons" + "\n" + "\n".join([', '.join(x) for x in dragon_list])
+    raptors = "Raptors" + "\n" + "\n".join([', '.join(x) for x in raptor_list])
 
     #Function to write teams to 'teams.txt' file
     def team_writer(team):
@@ -42,9 +41,6 @@ def league_builder():
         with open("teams.txt", "a") as file:
             file.write("\n" * 2)
 
-    #Writes out individual team letters
-    #Captures player names, parent names and list_names
-    #While I don't think it's...eloquent, it works!
     def team_letters(team):
         count = 0
         player_letters = []
@@ -78,24 +74,13 @@ def league_builder():
 
     
     #function calls
-    team_writer(Sharks)
-    team_writer(Dragons)
-    team_writer(Raptors)
+    all_teams = [sharks, dragons, raptors]
+    for team in all_teams:
+        team_writer(team)
 
-    team_letters(shark_list)
-    team_letters(dragon_list)
-    team_letters(raptor_list)
-
-
-
-
-
-    
-
-
-
-
-
+    all_letters = [shark_list, dragon_list, raptor_list]
+    for letter in all_letters:
+        team_letters(letter)
 
 
 if __name__ == '__main__':
